@@ -1,0 +1,3 @@
+export const PROJECT_SERVICE = 'PROJECT_SERVICE';
+export const TASK_SERVICE = 'TASK_SERVICE';
+export const AUTH_SERVICE = 'AUTH_SERVICE';
