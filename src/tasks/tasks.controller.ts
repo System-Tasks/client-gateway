@@ -7,6 +7,7 @@ import { PaginationDto } from 'src/common';
 import { TaskPaginationDto } from './dto/task-pagination.dto';
 import { StatusDto } from './dto/status.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { CreateCommentDto } from './dto/create-comment.dto';
 
 @Controller('tasks')
 @UseGuards(JwtAuthGuard)
@@ -53,5 +54,10 @@ export class TasksController {
       .pipe(
         catchError( err => {throw new RpcException(err)} )
       )
+  }
+
+  @Post()
+  createComment(@Body() createCommentDto: CreateCommentDto) {
+    return this.tasksClient.send('createComment', createCommentDto);
   }
 }
