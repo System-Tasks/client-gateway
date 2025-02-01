@@ -5,7 +5,6 @@ import { envs, PROJECT_SERVICE } from 'src/config';
 
 @Module({
   controllers: [ProjectsController],
-  providers: [],
   imports: [
     ClientsModule.register([
       { 

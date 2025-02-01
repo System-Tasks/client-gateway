@@ -1,6 +1,5 @@
-import { IsDate, IsDateString, IsEnum, IsOptional, IsString } from "class-validator";
+import { IsEnum, IsOptional, IsString } from "class-validator";
 import { TaskStatus, TaskStatusList } from "./enum/task.enum";
-import { Transform } from "class-transformer";
 
 export class CreateTaskDto {
     
@@ -10,9 +9,8 @@ export class CreateTaskDto {
     @IsString()
     description: string;
 
-    @IsDate()
     @IsOptional()
-    dateLimit: Date;
+    dateLimit: string;
 
     @IsEnum(TaskStatusList,{
         message: `The possible status values are ${TaskStatusList}`
