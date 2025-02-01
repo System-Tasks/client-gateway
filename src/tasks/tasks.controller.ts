@@ -3,7 +3,6 @@ import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { TASK_SERVICE } from 'src/config';
 import { CreateTaskDto, UpdateTaskDto } from './dto';
 import { catchError } from 'rxjs';
-import { PaginationDto } from 'src/common';
 import { TaskPaginationDto } from './dto/task-pagination.dto';
 import { StatusDto } from './dto/status.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
@@ -59,5 +58,10 @@ export class TasksController {
   @Post()
   createComment(@Body() createCommentDto: CreateCommentDto) {
     return this.tasksClient.send('createComment', createCommentDto);
+  }
+
+  @Get('project/:id')
+  findTasksProject(@Param('id') id: string) {
+    return this.tasksClient.send('findTaskProject', {id});
   }
 }
