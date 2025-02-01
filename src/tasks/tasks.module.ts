@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TasksController } from './tasks.controller';
 import { envs, TASK_SERVICE } from 'src/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   controllers: [TasksController],
@@ -17,6 +18,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           }
         },
       ]),
+      AuthModule
     ]
 })
 export class TasksModule {}

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Inject, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Inject, ParseIntPipe, Query, UseGuards } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { TASK_SERVICE } from 'src/config';
 import { CreateTaskDto, UpdateTaskDto } from './dto';
@@ -6,8 +6,10 @@ import { catchError } from 'rxjs';
 import { PaginationDto } from 'src/common';
 import { TaskPaginationDto } from './dto/task-pagination.dto';
 import { StatusDto } from './dto/status.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('tasks')
+@UseGuards(JwtAuthGuard)
 export class TasksController {
   constructor( @Inject(TASK_SERVICE) private readonly tasksClient: ClientProxy,) {}
 

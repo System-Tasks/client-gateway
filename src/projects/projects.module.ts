@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ProjectsController } from './projects.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { envs, PROJECT_SERVICE } from 'src/config';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   controllers: [ProjectsController],
@@ -16,6 +17,7 @@ import { envs, PROJECT_SERVICE } from 'src/config';
         }
       },
     ]),
+    AuthModule
   ]
 })
 export class ProjectsModule {
