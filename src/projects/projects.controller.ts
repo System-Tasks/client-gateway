@@ -18,9 +18,9 @@ export class ProjectsController {
     return this.projectsClient.send({ cmd:'create_project' }, createProjectDto)
   }
 
-  @Get()
-  findAllProjects(@Query() paginationDto: PaginationDto){
-    return this.projectsClient.send({ cmd:'find_all_projects' }, paginationDto)
+  @Get('team/:id')
+  findAllProjectsTeam(@Param('id') id:string, @Query() paginationDto: PaginationDto){
+    return this.projectsClient.send({ cmd:'find_all_projects' }, {id, paginationDto})
   }
 
   @Get(':id')

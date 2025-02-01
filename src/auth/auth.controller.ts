@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch, Inject, Get } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Inject, Get, Param } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { AUTH_SERVICE } from 'src/config';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -34,9 +34,9 @@ export class AuthController {
       )
   }
 
-  @Post('team')
-  createTeam(@Body() createTeamDto: CreateTeamDto) {
-    return this.authClient.send('createTeam', createTeamDto)
+  @Post('team/:id')
+  createTeam(@Param('id') id:string, @Body() createTeamDto: CreateTeamDto) {
+    return this.authClient.send('createTeam', {id, createTeamDto})
       .pipe(
         catchError( err => {throw new RpcException(err)} )
       )
