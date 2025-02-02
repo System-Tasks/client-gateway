@@ -55,13 +55,18 @@ export class TasksController {
       )
   }
 
-  @Post()
+  @Post('comment')
   createComment(@Body() createCommentDto: CreateCommentDto) {
     return this.tasksClient.send('createComment', createCommentDto);
   }
 
   @Get('project/:id')
   findTasksProject(@Param('id') id: string) {
-    return this.tasksClient.send('findTaskProject', {id});
+    return  this.tasksClient.send('findTaskProject', {id});
+  }
+
+  @Get('comment/:id')
+  findCommentTask(@Param('id') id: string) {
+    return  this.tasksClient.send('findCommentTask', {id});
   }
 }
