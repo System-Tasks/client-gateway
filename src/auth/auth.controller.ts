@@ -34,9 +34,9 @@ export class AuthController {
       )
   }
 
-  @Post('team/:id')
-  createTeam(@Param('id') id:string, @Body() createTeamDto: CreateTeamDto) {
-    return this.authClient.send('createTeam', {id, createTeamDto})
+  @Post('team')
+  createTeam(@Body() createTeamDto: CreateTeamDto) {
+    return this.authClient.send('createTeam', createTeamDto)
       .pipe(
         catchError( err => {throw new RpcException(err)} )
       )
