@@ -21,6 +21,9 @@ export class ProjectsController {
   @Get('team/:id')
   findAllProjectsTeam(@Param('id') id: string){
     return this.projectsClient.send({ cmd:'find_all_projects' }, {id})
+    .pipe(
+      catchError( err => {throw new RpcException(err)} )
+    )
   }
 
   @Get(':id')
