@@ -17,4 +17,8 @@ export class CreateTaskDto {
     })
     @IsOptional()
     status: TaskStatus = TaskStatus.PENDING
+
+    @IsString()
+    @IsOptional()
+    projectId: string
 }
