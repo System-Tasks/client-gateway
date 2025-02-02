@@ -10,5 +10,5 @@ export class CreateProjectDto {
 
     @IsString()
     @IsOptional()
-    public projectId: string
+    public teamId: string
 }
