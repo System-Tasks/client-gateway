@@ -70,7 +70,7 @@ export class TasksController {
     return  this.tasksClient.send('findCommentTask', {id});
   }
 
-  @Get('comments')
+  @Get('comment/all')
   findAllComments() {
     return  this.tasksClient.send('findAllComments', {});
   }
