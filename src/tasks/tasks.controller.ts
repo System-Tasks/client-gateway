@@ -69,4 +69,9 @@ export class TasksController {
   findCommentTask(@Param('id') id: string) {
     return  this.tasksClient.send('findCommentTask', {id});
   }
+
+  @Get('comment')
+  findAllComments() {
+    return  this.tasksClient.send('findAllComments', {});
+  }
 }
